@@ -339,9 +339,88 @@
             gap: 10px;
         }
 
+
         .confetti-btn:hover {
             transform: scale(1.05);
             box-shadow: 0 6px 20px rgba(232, 93, 117, 0.6);
+        }
+
+        /* Memory Lane Section */
+        .memory-lane {
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .polaroid {
+            background: white;
+            padding: 15px 15px 60px 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: rotate(-2deg);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .polaroid:nth-child(even) {
+            transform: rotate(3deg);
+        }
+
+        .polaroid:hover {
+            transform: scale(1.05) rotate(0);
+            box-shadow: 0 15px 35px rgba(232, 93, 117, 0.3);
+            z-index: 10;
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: 280px;
+            /* Fixed height for consistency */
+            object-fit: cover;
+            border-radius: 2px;
+            filter: sepia(0.2);
+            transition: filter 0.3s ease;
+        }
+
+        .polaroid:hover img {
+            filter: sepia(0);
+        }
+
+        .polaroid-caption {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-family: 'Quicksand', sans-serif;
+            /* Using Quicksand as it looks clean/handwritten-ish */
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Marker tape effect */
+        .polaroid::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.6);
+            border-left: 2px solid rgba(0, 0, 0, 0.05);
+            border-right: 2px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
@@ -444,6 +523,37 @@
                     Happy Valentine's Day to my <strong>absolute favorite person</strong>! While this day celebrates all
                     kinds of love, I'm celebrating the incredible friendship love we share. You make my world brighter,
                     and I'm so grateful for you every single day! 💕
+                </div>
+            </div>
+        </div>
+
+        <!-- Memory Lane Section -->
+        <div class="memory-lane">
+            <h2 class="section-title">Our Memory Lane <span class="sparkle">📸</span></h2>
+            <div class="gallery-grid">
+                <div class="polaroid">
+                    <img src="https://placehold.co/600x600/FF9EB5/white?text=Crazy+Selfies" alt="Memory 1">
+                    <div class="polaroid-caption">Crazy Selfies 🤳</div>
+                </div>
+                <div class="polaroid">
+                    <img src="https://placehold.co/600x600/C9B6E4/white?text=That+Trip" alt="Memory 2">
+                    <div class="polaroid-caption">That One Trip ✈️</div>
+                </div>
+                <div class="polaroid">
+                    <img src="https://placehold.co/600x600/F4C430/white?text=Food+Coma" alt="Memory 3">
+                    <div class="polaroid-caption">Food Adventures 🍕</div>
+                </div>
+                <div class="polaroid">
+                    <img src="https://placehold.co/600x600/E85D75/white?text=Best+Day" alt="Memory 4">
+                    <div class="polaroid-caption">Best Day Ever ✨</div>
+                </div>
+                <div class="polaroid">
+                    <img src="https://placehold.co/600x600/FFD6E8/white?text=Inside+Jokes" alt="Memory 5">
+                    <div class="polaroid-caption">Inside Jokes 🤫</div>
+                </div>
+                <div class="polaroid">
+                    <img src="https://placehold.co/600x600/87CEEB/white?text=More+Fun" alt="Memory 6">
+                    <div class="polaroid-caption">To Be Continued... 💖</div>
                 </div>
             </div>
         </div>
