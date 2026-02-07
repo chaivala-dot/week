@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Week of Friendship ✨</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Quicksand:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #FFF8F0;
+            --soft-pink: #FFD6E8;
+            --rose: #FF9EB5;
+            --deep-rose: #E85D75;
+            --lavender: #C9B6E4;
+            --gold: #F4C430;
+            --text-dark: #3D2E3E;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, #FFE8F0 50%, #F0E8FF 100%);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Floating hearts background */
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0.15;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.15;
+            }
+
+            90% {
+                opacity: 0.15;
+            }
+
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            color: var(--deep-rose);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--lavender);
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .week-container {
+            display: grid;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .day-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            transform: translateY(50px);
+            opacity: 0;
+            animation: slideUp 0.8s ease-out forwards;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .day-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .day-card:hover::before {
+            left: 100%;
+        }
+
+        .day-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 48px rgba(233, 93, 117, 0.2);
+        }
+
+        .day-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .day-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .day-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .day-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .day-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .day-card:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .day-card:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .day-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .day-icon {
+            font-size: 3rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .day-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--deep-rose);
+        }
+
+        .day-date {
+            font-size: 0.9rem;
+            color: var(--lavender);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .day-message {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            font-weight: 400;
+        }
+
+        .day-message strong {
+            color: var(--deep-rose);
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            padding: 40px 20px;
+            animation: fadeInUp 1s ease-out 0.8s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .final-message {
+            background: linear-gradient(135deg, rgba(255, 158, 181, 0.3), rgba(201, 182, 228, 0.3));
+            padding: 50px;
+            border-radius: 30px;
+            border: 3px solid var(--rose);
+            box-shadow: 0 10px 40px rgba(233, 93, 117, 0.2);
+        }
+
+        .final-message h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--deep-rose);
+            margin-bottom: 25px;
+        }
+
+        .final-message p {
+            font-size: 1.2rem;
+            line-height: 2;
+            color: var(--text-dark);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .sparkle {
+            display: inline-block;
+            animation: sparkle 1.5s infinite;
+        }
+
+        @keyframes sparkle {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(1.2);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .day-card {
+                padding: 30px 20px;
+            }
+
+            .day-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .final-message {
+                padding: 30px 20px;
+            }
+        }
+
+        /* Send Love Button */
+        .confetti-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--deep-rose);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(232, 93, 117, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .confetti-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(232, 93, 117, 0.6);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hearts-bg" id="hearts-bg"></div>
+
+    <div class="container">
+        <header>
+            <h1>A Week to Celebrate You <span class="sparkle">✨</span></h1>
+            <p class="subtitle">Valentine's Week for My Best Friend</p>
+        </header>
+
+        <div class="week-container">
+            <div class="day-card">
+                <div class="day-header">
+                    <div class="day-icon">🌹</div>
+                    <div class="day-title">Rose Day</div>
+                </div>
+                <div class="day-date">February 7th</div>
+                <div class="day-message">
+                    Just like roses come in different colors, our friendship has so many beautiful shades. Thank you for
+                    being the <strong>constant bloom</strong> of joy in my life. Here's a virtual bouquet to celebrate
+                    the amazing person you are!
+                </div>
+            </div>
+
+            <div class="day-card">
+                <div class="day-header">
+                    <div class="day-icon">💝</div>
+                    <div class="day-title">Propose Day</div>
+                </div>
+                <div class="day-date">February 8th</div>
+                <div class="day-message">
+                    I propose that we continue being <strong>ridiculously awesome best friends</strong> forever! No one
+                    else gets my weird jokes quite like you do, and honestly, that's a bond worth celebrating. Will you
+                    accept this proposal of eternal friendship? 😄
+                </div>
+            </div>
+
+            <div class="day-card">
+                <div class="day-header">
+                    <div class="day-icon">🍫</div>
+                    <div class="day-title">Chocolate Day</div>
+                </div>
+                <div class="day-date">February 9th</div>
+                <div class="day-message">
+                    Life with you is sweeter than the finest chocolate! Thanks for making every moment
+                    <strong>deliciously fun</strong>. From late-night talks to spontaneous adventures, you add the
+                    perfect amount of sweetness to my days.
+                </div>
+            </div>
+
+            <div class="day-card">
+                <div class="day-header">
+                    <div class="day-icon">🧸</div>
+                    <div class="day-title">Teddy Day</div>
+                </div>
+                <div class="day-date">February 10th</div>
+                <div class="day-message">
+                    You're like the perfect teddy bear – always there for a <strong>warm hug</strong> when I need it
+                    most. Comforting, reliable, and impossible not to love. Thanks for being my constant source of
+                    comfort and support!
+                </div>
+            </div>
+
+            <div class="day-card">
+                <div class="day-header">
+                    <div class="day-icon">🌟</div>
+                    <div class="day-title">Promise Day</div>
+                </div>
+                <div class="day-date">February 11th</div>
+                <div class="day-message">
+                    I promise to always be there for you, to <strong>celebrate your wins</strong>, support you through
+                    challenges, and keep our friendship alive with terrible puns and good memories. You're stuck with
+                    me, bestie!
+                </div>
+            </div>
+
+            <div class="day-card">
+                <div class="day-header">
+                    <div class="day-icon">💌</div>
+                    <div class="day-title">Hug Day</div>
+                </div>
+                <div class="day-date">February 12th</div>
+                <div class="day-message">
+                    Sending you the <strong>biggest virtual hug</strong> today! Your friendship wraps around me like the
+                    warmest embrace. Thanks for being someone I can always count on, laugh with, and create amazing
+                    memories alongside.
+                </div>
+            </div>
+
+            <div class="day-card">
+                <div class="day-header">
+                    <div class="day-icon">💖</div>
+                    <div class="day-title">Valentine's Day</div>
+                </div>
+                <div class="day-date">February 14th</div>
+                <div class="day-message">
+                    Happy Valentine's Day to my <strong>absolute favorite person</strong>! While this day celebrates all
+                    kinds of love, I'm celebrating the incredible friendship love we share. You make my world brighter,
+                    and I'm so grateful for you every single day! 💕
+                </div>
+            </div>
+        </div>
+
+        <button class="confetti-btn" onclick="fireConfetti()">
+            <span>Send Love</span> 🎉
+        </button>
+
+        <footer>
+            <div class="final-message">
+                <h2>Thank You for Being You <span class="sparkle">✨</span></h2>
+                <h2>"There is Nothing I Would Not Do..." <span class="sparkle">✨</span></h2>
+                <p>
+                    <em>"There is nothing I would not do for those who are really my friends. I have no notion of
+                        loving
+                        people by halves, it is not my nature."</em> — <strong>Jane Austen</strong>, <em>Northanger
+                        Abbey</em>
+                    <br><br>
+                    Just like in the classics, our friendship is timeless. Through every chapter of life—the plot
+                    twists, the joyful scenes, and the quiet moments—I am so grateful you are main character in my
+                    story. Here's to us, to loving fully, and to a friendship written in the stars! 🌟💕
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        // Confetti Logic
+        function fireConfetti() {
+            var duration = 3 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            var random = function (min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            var interval = setInterval(function () {
+                var timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                var particleCount = 50 * (timeLeft / duration);
+
+                // multiple confetti bursts
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: random(0.1, 0.3), y: Math.random() - 0.2 }, colors: ['#FF9EB5', '#E85D75', '#C9B6E4'] }));
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: random(0.7, 0.9), y: Math.random() - 0.2 }, colors: ['#F4C430', '#E85D75', '#FFF8F0'] }));
+            }, 250);
+        }
+
+        // Create floating hearts
+        const heartsContainer = document.getElementById('hearts-bg');
+        const heartSymbols = ['💕', '💖', '💗', '💝', '🌸', '✨'];
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heartsContainer.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 20000);
+        }
+
+        // Create hearts periodically
+        setInterval(createHeart, 800);
+
+        // Create initial hearts
+        for (let i = 0; i < 15; i++) {
+            setTimeout(createHeart, i * 200);
+        }
+    </script>
+</body>
+
+</html>
